@@ -15,10 +15,17 @@ namespace CrudxApi.Src.FileRedactor
 		}
 
 
-        public string GetFileText(string path, string fileName, string projectTitle)
+        public string GetFileText(string path, string fileName, string projectTitle, string dynamicProjectTitle)
         {
-            var content = System.IO.File.ReadAllText(_configuration["ProjectsDirPath"] + '/' + projectTitle + '/' + path + '/' + fileName);
-            return content;
+            if (fileName != "") {
+                if (dynamicProjectTitle != "" && path != "" && path.Contains(dynamicProjectTitle))
+                {
+                    path = path.Replace(dynamicProjectTitle, projectTitle);
+                }
+                var content = System.IO.File.ReadAllText(_configuration["ProjectsDirPath"] + '/' + projectTitle + '/' + path + '/' + fileName);
+                return content;
+            }
+            return null;
         }
 
         public bool CreateCommand(string? path, string? commandLine, string projectTitle)
@@ -45,8 +52,12 @@ namespace CrudxApi.Src.FileRedactor
             return true;
         }
          
-        public bool CreateFile(FileModel file, string projectTitle)
+        public bool CreateFile(FileModel file, string projectTitle, string projectDynamicTitle)
         {
+            if (projectDynamicTitle != "" && file.Path != "" && file.Path.Contains(projectDynamicTitle))
+            {
+                file.Path = file.Path.Replace(projectDynamicTitle, projectTitle);
+            }
             Directory.CreateDirectory(_configuration["ProjectsDirPath"] + '/' + projectTitle + '/' + file.Path);
             if(file.FileName != "" && file.Text != "")
                 System.IO.File.WriteAllText(_configuration["ProjectsDirPath"] + '/' + projectTitle + '/' + file.Path + '/' + file.FileName, file.Text);
@@ -54,10 +65,10 @@ namespace CrudxApi.Src.FileRedactor
             return true;
         }
 
-        public bool CreateFile(List<FileModel> files, string projectTitle)
+        public bool CreateFile(List<FileModel> files, string projectTitle, string projectDynamicTitle)
         {
             foreach (var file in files)
-                CreateFile(file, projectTitle);
+                CreateFile(file, projectTitle, projectDynamicTitle);
             return true;
         }
 

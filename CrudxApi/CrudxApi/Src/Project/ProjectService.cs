@@ -127,7 +127,7 @@ namespace CrudxApi.Src.Project
             _fileRedactorService.CreateFile(RefactorTechnologyFiles(technology.Files,
                 new List<string> {technology.DynamicTitle, technology.DynamicDbUser, technology.DynamicDbPassword, technology.DynamicDbName,},
                 new List<string> {project.Title, project.DbUser, project.DbPassword, project.DbName }),
-                project.Title);
+                project.Title, technology.DynamicTitle);
 
             return true;
         }

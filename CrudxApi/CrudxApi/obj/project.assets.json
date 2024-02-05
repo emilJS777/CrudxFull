@@ -1953,11 +1953,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/emilhambardzumyan/Projects/CrudxApi/CrudxApi/CrudxApi.csproj",
+      "projectUniqueName": "/Users/emilhambardzumyan/Projects/CrudxFull/CrudxApi/CrudxApi/CrudxApi.csproj",
       "projectName": "CrudxApi",
-      "projectPath": "/Users/emilhambardzumyan/Projects/CrudxApi/CrudxApi/CrudxApi.csproj",
+      "projectPath": "/Users/emilhambardzumyan/Projects/CrudxFull/CrudxApi/CrudxApi/CrudxApi.csproj",
       "packagesPath": "/Users/emilhambardzumyan/.nuget/packages/",
-      "outputPath": "/Users/emilhambardzumyan/Projects/CrudxApi/CrudxApi/obj/",
+      "outputPath": "/Users/emilhambardzumyan/Projects/CrudxFull/CrudxApi/CrudxApi/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/emilhambardzumyan/.nuget/NuGet/NuGet.Config"

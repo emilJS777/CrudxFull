@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Jfyb2DHxKnU6+Jz9XG6K9doRQTTliWycwVfoASTr9Q7X/iUUdIyoPbSz4McUddJaQAbMQjYGhIwvW7G1xNGbvw==",
+  "dgSpecHash": "QnjyTazsOk6nfH+GKP1BybwrZtiRtntr0g3+mRhqdlKQYSCEeFkjB+FJkXNMRJCqECs2TLshpzMeC95pRm7Msg==",
   "success": true,
-  "projectFilePath": "/Users/emilhambardzumyan/Projects/CrudxApi/CrudxApi/CrudxApi.csproj",
+  "projectFilePath": "/Users/emilhambardzumyan/Projects/CrudxFull/CrudxApi/CrudxApi/CrudxApi.csproj",
   "expectedPackageFiles": [
     "/Users/emilhambardzumyan/.nuget/packages/automapper/12.0.1/automapper.12.0.1.nupkg.sha512",
     "/Users/emilhambardzumyan/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/12.0.1/automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

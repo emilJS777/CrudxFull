@@ -123,17 +123,20 @@ namespace CrudxApi.Src.Crud
             foreach (var file in technology.Files)
             {
                 FileModel newFile = file;
-                var fileText = _fileRedactorService.GetFileText(file.Path, file.FileName, project.Title);
-                newFile.Text = fileText;
-                FileList.Add(newFile);
+                var fileText = _fileRedactorService.GetFileText(file.Path, file.FileName, project.Title, technology.DynamicTitle);
+                if (fileText != null)
+                {
+                    newFile.Text = fileText;
+                    FileList.Add(newFile);
+                }
             }
             var technologyFiles = RefactorFiles(FileList, crudStatic.DynamicTitle, crudViewModel.Title, crudStatic.DynamicFieldTitle, crudStatic.DynamicFieldType, crud.Fields);
-            _fileRedactorService.CreateFile(technologyFiles, project.Title);
+            _fileRedactorService.CreateFile(technologyFiles, project.Title, technology.DynamicTitle);
 
             var files = RefactorFiles(crudStatic.Files, crudStatic.DynamicTitle, crudViewModel.Title, crudStatic.DynamicFieldTitle, crudStatic.DynamicFieldType, crud.Fields);
             crud.Files = files;
             _crudRepository.Update(crud);
-            _fileRedactorService.CreateFile(files, project.Title);
+            _fileRedactorService.CreateFile(files, project.Title, technology.DynamicTitle);
 
             
             return true;
@@ -182,18 +185,18 @@ namespace CrudxApi.Src.Crud
             var FileList = new List<FileModel>();
             foreach (var file in technology.Files)
             {
-                var fileText = _fileRedactorService.GetFileText(file.Path, file.FileName, project.Title);
+                var fileText = _fileRedactorService.GetFileText(file.Path, file.FileName, project.Title, technology.DynamicTitle);
                 FileModel newFile = file;
                 newFile.Text = fileText;
                 FileList.Add(newFile);
             }
             var technologyFiles = RefactorFiles(FileList, crudStatic.DynamicTitle, crudViewModel.Title, crudStatic.DynamicFieldTitle, crudStatic.DynamicFieldType, crud.Fields);
-            _fileRedactorService.CreateFile(technologyFiles, project.Title);
+            _fileRedactorService.CreateFile(technologyFiles, project.Title, technology.DynamicTitle);
             //_crudRepository.Delete(crud);
             var files = RefactorFiles(crudStatic.Files, crudStatic.DynamicTitle, crudViewModel.Title, crudStatic.DynamicFieldTitle, crudStatic.DynamicFieldType, crud.Fields);
             crudViewModel.Files = files;
             _crudRepository.Update(_mapper.Map(crudViewModel, crud));
-            _fileRedactorService.CreateFile(files, project.Title);
+            _fileRedactorService.CreateFile(files, project.Title, technology.DynamicTitle);
 
             
             return true;
